@@ -1,0 +1,19 @@
+vector<int> prefixCount(int n, int q, string li[], string query[])
+    {
+        unordered_map<string,int>mp;
+        for(int i=0;i<n;i++)
+        {
+            string p="";
+            for(int j=0;j<li[i].size();j++)
+            {
+                p+=li[i][j];
+                mp[p]++;
+            }
+        }
+        vector<int>v;
+        for(int i=0;i<q;i++)
+        {
+            v.push_back(mp[query[i]]);
+        }
+        return v;
+    }
