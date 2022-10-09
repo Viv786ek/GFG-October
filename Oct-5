@@ -1,3 +1,5 @@
+class Solution{
+public:
 vector<int> prefixCount(int n, int q, string li[], string query[])
     {
         unordered_map<string,int>mp;
@@ -16,4 +18,5 @@ vector<int> prefixCount(int n, int q, string li[], string query[])
             v.push_back(mp[query[i]]);
         }
         return v;
+    }
     }
