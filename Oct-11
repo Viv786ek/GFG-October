@@ -1,0 +1,35 @@
+ string decodedString(string s){
+        // code here
+       stack<string> stackOfString;
+       stack<int> stackOfNumber;
+       string currString = "";
+       string prevString = "";
+       int currLength = 0;
+       int prevLength = 0;
+       for(auto &e: s){
+           if(e == '['){
+               stackOfString.push(currString);
+               stackOfNumber.push(currLength);
+               currLength = 0;
+               currString = "";
+           }
+           else if(e == ']'){
+               string prevString = stackOfString.top();
+               stackOfString.pop();
+               int prevLength = stackOfNumber.top();
+               stackOfNumber.pop();
+               string temp = "";
+               for(int i = 0; i < prevLength; i++){
+                   temp += currString;
+               }
+               currString = prevString + temp;
+           }
+           else if(e >= '0' && e <= '9'){
+               currLength = currLength*10 + (e - '0');
+           }
+           else{
+               currString += e;
+           }
+       }
+       return currString;
+    }
