@@ -1,0 +1,23 @@
+ int fillingBucket(int N) {
+
+        // code here
+
+        int m=1e8;
+
+        int prev=1,prev1=1;
+
+        for(int i=2;i<=N;i++){
+
+            int curr=(prev%m+prev1%m)%m;
+
+            prev1=prev;
+
+            prev=curr;
+
+            
+
+        }
+
+        return prev;
+
+    }
