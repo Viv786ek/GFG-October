@@ -1,0 +1,41 @@
+  vector <int> max_of_subarrays(int *arr, int n, int k)
+
+    {
+
+       vector<int>ans;    
+
+       deque<int>dq;
+
+       
+
+       for(int i=0;i<n;i++)
+
+       {
+
+           if(!dq.empty() && dq.front()==i-k)  // This is for remove the element which are out of boundry
+
+            dq.pop_front();
+
+            
+
+           while(!dq.empty() && arr[dq.back()]<arr[i])
+
+            dq.pop_back();  // This is for remove the back elemen in queue which is smaller than the current element.
+
+            
+
+            dq.push_back(i);  // This is to push the index of current element into the deque
+
+            
+
+            if(i>=k-1) //This is to check the i is enter into new subarray.
+
+             ans.push_back(arr[dq.front()]);  //So the greater element of last subarray is push into answer.
+
+       }
+
+       
+
+       return ans;
+
+    }
