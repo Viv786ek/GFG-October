@@ -1,0 +1,7 @@
+int findMin(int n, char a[]){
+        // code here
+        map<char,int> m;
+for(int i=0;i<n;i++)  m[a[i]]++;
+if(m['R']%2 == m['G']%2 && m['G']%2 == m['B']%2) return 2;
+else return 1;
+    }
