@@ -1,0 +1,24 @@
+ vector <int> ans;
+    void solve(int arr[] , int l , int h){
+        
+        if(l==h){
+            ans.push_back(arr[l]); 
+            return;
+        }
+        
+        if(l>h)
+            return;
+            
+        int ind =l+1;
+        while(ind <= h and arr[ind] < arr[l])
+            ind++;
+
+        solve(arr , l+1 , ind-1);
+        solve(arr , ind , h);
+    }
+  
+    vector<int> leafNodes(int arr[],int N) {
+        // code here
+        solve(arr , 0 , N-1);
+        return ans;
+    }
