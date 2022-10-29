@@ -1,0 +1,51 @@
+class Solution{
+
+public:
+
+vector<vector<string>> displayContacts(int n, string contact[], string s)
+
+    {
+
+    map<string,vector<string>> mp;
+
+    sort(contact,contact+n);
+
+        vector<vector<string>> ans;
+
+        for(int i=0; i<s.size(); i++){
+
+            string res = s.substr(0,i+1);
+
+            for(int j=0; j<n; j++){
+
+                if(res == contact[j].substr(0,i+1)){
+
+                // Here we need to check whether the string pre exist or not
+
+                    if(find(mp[res].begin(),mp[res].end(),contact[j]) == mp[res].end()){
+
+                    mp[res].push_back(contact[j]);}
+
+                }
+
+            }
+
+            if(mp[res].size() == 0){
+
+                mp[res].push_back("0");
+
+            }
+
+        }
+
+        for(auto pr: mp){
+
+            ans.push_back(pr.second);
+
+        }
+
+        return ans;
+
+    }
+
+};
